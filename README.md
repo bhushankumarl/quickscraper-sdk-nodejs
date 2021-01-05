@@ -1,2 +1,1 @@
-# quickscraper-sdk-nodejs
-https://quickscraper.co
+# Quick Scraper NodeJS SDK
