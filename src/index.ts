@@ -1,3 +1,5 @@
-export const getHtml = (name: string) => {
-    return `Hello ${name}`
-};
+export class QuickScraper {
+    public getHtml(name: string): string {
+        return `Hello ${name}`;
+    }
+}

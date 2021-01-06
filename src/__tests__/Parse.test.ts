@@ -1,5 +1,6 @@
-import { getHtml } from '../index';
+import { QuickScraper } from '../index';
+const QuickScraperClient = new QuickScraper();
 
 test('Say Hello', () => {
-  expect(getHtml('Carl')).toBe('Hello Carl');
+  expect(QuickScraperClient.getHtml('Carl')).toBe('Hello Carl');
 });

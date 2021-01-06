@@ -4,8 +4,13 @@
   "description": "A nice greeter",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "engines": {
+    "node": "10.16.3"
+  },
   "scripts": {
+    "pretest":"npm run check-version",
     "test": "jest --config jestconfig.json",
+    "check-version": "node check_node_version.ts",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
@@ -29,6 +34,9 @@
     "url": "https://github.com/bhushankumarl/quickscraper-sdk-nodejs/issues"
   },
   "homepage": "https://github.com/bhushankumarl/quickscraper-sdk-nodejs#readme",
+  "dependencies": {
+    "semver": "^7.3.4"
+  },
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "codecov": "^3.1.0",
