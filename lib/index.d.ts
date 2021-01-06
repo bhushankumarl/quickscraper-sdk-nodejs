@@ -1,3 +1,3 @@
-export declare class {
+export declare class QuickScraper {
+    getHtml(name: string): string;
 }
-export declare const getHtml: (name: string) => string;

@@ -8,7 +8,7 @@
     "node": "10.16.3"
   },
   "scripts": {
-    "pretest":"npm run check-version",
+    "pretest": "npm run check-version",
     "test": "jest --config jestconfig.json",
     "check-version": "node check_node_version.ts",
     "build": "tsc",
@@ -40,6 +40,7 @@
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "codecov": "^3.1.0",
+    "handlebars": "^4.5.0",
     "jest": "^23.6.0",
     "prettier": "^1.13.2",
     "ts-jest": "^22.4.6",
