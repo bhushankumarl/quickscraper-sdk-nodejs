@@ -10,4 +10,5 @@ test('Validate undefined', async () => {
     expect(MOCK.SAMPLE_REQUEST_URL_1).not.toBeUndefined();
     // expect(MOCK.SAMPLE_REQUEST_URL_1).not.toBeEm();
     expect(ENVs.ACCESS_TOKEN).not.toBeUndefined();
+    expect(ENVs.ACCESS_TOKEN).not.toBeNull();
 });
