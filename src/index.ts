@@ -26,10 +26,10 @@ export class QuickScraper {
 
     public async getHtml(url: string): Promise<string> {
         const requestUrl = this.prepareRequestUrl(url);
-        console.log('requestUrl ', requestUrl);
+        // console.log('requestUrl ', requestUrl);
         const response = await got(requestUrl);
-        console.log('response');
-        console.log(response.body);
+        // console.log('response');
+        // console.log(response.body);
         return response.body;
     }
 }

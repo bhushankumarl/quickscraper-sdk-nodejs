@@ -5,3 +5,8 @@ export const MOCK = {
 export const ENVs = {
     ACCESS_TOKEN: process.env.QS_ACCESS_TOKEN
 }
+
+test('Validate undefined', async () => {
+    expect(MOCK.SAMPLE_REQUEST_URL_1).not.toBeUndefined();
+    expect(ENVs.ACCESS_TOKEN).not.toBeUndefined();
+});
