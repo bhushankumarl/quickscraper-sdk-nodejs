@@ -6,6 +6,9 @@ export const ENVs = {
     ACCESS_TOKEN: process.env.QS_ACCESS_TOKEN || ''
 }
 
+console.log('ENVs ', ENVs);
+console.log('MOCK ', MOCK);
+
 test('Validate undefined', async () => {
     expect(MOCK.SAMPLE_REQUEST_URL_1).not.toBeUndefined();
     // expect(MOCK.SAMPLE_REQUEST_URL_1).not.toBeEm();
