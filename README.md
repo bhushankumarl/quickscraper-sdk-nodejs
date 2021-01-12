@@ -24,6 +24,8 @@ import { QuickScraper } from 'quickscraper-sdk';
 const QuickScraperClient = new QuickScraper();
 
 try {
+    const ACCESS_TOKEN = '';
+    QuickScraperClient.setAccessToken(ACCESS_TOKEN)
     const requestUrl = 'https://mylocation.org';
     const response = await QuickScraperClient.getHtml(requestUrl);
     console.log('response');
