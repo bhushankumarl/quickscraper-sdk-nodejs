@@ -11,6 +11,7 @@
     "pretest": "npm run check-version",
     "test": "jest --config jestconfig.json",
     "check-version": "node check_node_version.ts",
+    "prebuild": "npm run lint",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",

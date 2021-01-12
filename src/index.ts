@@ -16,13 +16,6 @@ export class QuickScraper {
         this.accessToken = accessToken;
     }
 
-    private prepareRequestUrl(url: string): string {
-        const requestUrl = this.parseUrl.concat
-            ('?', 'access_token=', this.accessToken,
-                '&', 'URL=', url);
-        // console.log('requestUrl ', requestUrl);
-        return requestUrl;
-    }
 
     public async getHtml(url: string): Promise<string> {
         const requestUrl = this.prepareRequestUrl(url);
@@ -31,5 +24,13 @@ export class QuickScraper {
         // console.log('response');
         // console.log(response.body);
         return response.body;
+    }
+
+    private prepareRequestUrl(url: string): string {
+        const requestUrl = this.parseUrl.concat
+            ('?', 'access_token=', this.accessToken,
+                '&', 'URL=', url);
+        // console.log('requestUrl ', requestUrl);
+        return requestUrl;
     }
 }

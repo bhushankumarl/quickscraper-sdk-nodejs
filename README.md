@@ -1,6 +1,6 @@
 # Quick Scraper NodeJS SDK
 
-[![Version](https://img.shields.io/npm/v/quickscraper-sdk.svg)](https://www.npmjs.org/package/amazon-mws)
+[![Version](https://img.shields.io/npm/v/quickscraper-sdk.svg)](https://www.npmjs.org/package/quickscraper-sdk)
 
 ##### It does supports EcmaScript 8, TypeScript, async-await, Promises, Callback !
 ##### It does also supports for AWS Lambda like serverless cloud function call.
