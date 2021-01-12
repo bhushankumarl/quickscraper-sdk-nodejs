@@ -23,7 +23,12 @@
   },
   "keywords": [
     "quickscraper",
-    "scraper"
+    "scraper",
+    "web scrapers",
+    "proxies",
+    "CAPTCHAs",
+    "headless browsers",
+    "crawling"
   ],
   "author": "Bhushankumar L (bhushankumar.lilapara@gmail.com)",
   "license": "MIT",
