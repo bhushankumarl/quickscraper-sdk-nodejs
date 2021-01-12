@@ -18,8 +18,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        QS_ACCESS_TOKEN: ${{ secrets.QS_ACCESS_TOKEN }}
-        DEBUG: "QS:*"
     - run: npm install
     - run: npm run build
     - run: npm run test

@@ -8,9 +8,7 @@
     "node": "10.16.3"
   },
   "scripts": {
-    "pretest": "npm run check-version",
     "test": "jest --config jestconfig.json",
-    "check-version": "node check_node_version.ts",
     "prebuild": "npm run lint && npm run test",
     "build": "tsc",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
