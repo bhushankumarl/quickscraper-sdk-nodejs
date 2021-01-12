@@ -10,7 +10,7 @@ test('Parse URL', async () => {
     expect(response).not.toBeNull();
     expect(response).not.toBeUndefined();
   } catch (error) {
-    console.log('error ', error);
+    // console.log('error ', error);
     expect(error).toBeNull();
   }
 });

@@ -1,3 +1,3 @@
 export const APP = {
-    BASE_URL: 'https://rest.quickscraper.co/'
+  BASE_URL: 'https://rest.quickscraper.co/'
 }
