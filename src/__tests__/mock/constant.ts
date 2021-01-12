@@ -9,7 +9,7 @@ export const ENVs = {
 // console.log('ENVs ', ENVs);
 // console.log('MOCK ', MOCK);
 
-test('Validate undefined', async () => {
+test('Validate ENVs value should be set correct.', async () => {
   expect(MOCK.SAMPLE_REQUEST_URL_1).not.toBeUndefined();
   // expect(MOCK.SAMPLE_REQUEST_URL_1).not.toBeEm();
   expect(ENVs.ACCESS_TOKEN).not.toBeUndefined();
