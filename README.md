@@ -11,10 +11,6 @@
 
 ##### It does also supports for AWS Lambda like serverless cloud function call.
 
-##### It supports pure JSON response.
-
-##### All methods support Promise and Callback both.
-
 ##### Please Feel free to create Issue for any help !
 
 ## Installation
@@ -34,15 +30,15 @@ import { QuickScraper } from 'quickscraper-sdk';
 const QuickScraperClient = new QuickScraper();
 
 try {
-    const ACCESS_TOKEN = '';
-    QuickScraperClient.setAccessToken(ACCESS_TOKEN)
-    const requestUrl = 'https://mylocation.org';
-    const htmlResponse = await QuickScraperClient.getHtml(requestUrl);
-    console.log('htmlResponse ',htmlResponse);
-    // Manipulate your response here using cheerio
-  } catch (error) {
-    console.log('error ', error);
-  }
+  const ACCESS_TOKEN = '';
+  QuickScraperClient.setAccessToken(ACCESS_TOKEN)
+  const requestUrl = 'https://mylocation.org';
+  const htmlResponse = await QuickScraperClient.getHtml(requestUrl);
+  console.log('htmlResponse ', htmlResponse);
+  // Manipulate your response here using cheerio
+} catch (error) {
+  console.log('error ', error);
+}
 ```
 
 ## Do you need an expert?
