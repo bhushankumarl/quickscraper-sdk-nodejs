@@ -3,7 +3,7 @@ export const MOCK = {
 }
 
 export const ENVs = {
-  ACCESS_TOKEN: process.env.QS_ACCESS_TOKEN || null
+  ACCESS_TOKEN: process.env.QS_ACCESS_TOKEN || ''
 }
 
 // console.log('ENVs ', ENVs);

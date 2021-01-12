@@ -5,7 +5,7 @@ export class QuickScraper {
     private parseUrl: string;
     private accessToken = '';
 
-    protected constructor(accessToken?: string) {
+    public constructor(accessToken?: string) {
       this.parseUrl = APP.BASE_URL.concat('parse');
       if (accessToken) {
         this.setAccessToken(accessToken);
