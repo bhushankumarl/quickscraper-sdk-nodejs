@@ -1,6 +1,11 @@
 # Quick Scraper NodeJS SDK
 
 [![Version](https://img.shields.io/npm/v/quickscraper-sdk.svg)](https://www.npmjs.org/package/quickscraper-sdk)
+[![GitHub CI](https://github.com/bhushankumarl/quickscraper-sdk-nodejs/workflows/.github/workflows/.node.js.yml/badge.svg)]((https://www.npmjs.org/package/quickscraper-sdk))
+
+<img src="https://app.quickscraper.co/assets/images/quick_scraper_logo_3.png" width="300" />
+
+[Register For Free https://www.quickscraper.co](https://www.quickscraper.co)
 
 ##### It does supports EcmaScript 8, TypeScript, async-await, Promises, Callback !
 
