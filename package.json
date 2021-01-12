@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "jest --config jestconfig.json",
+    "test:single": "jest parse.test.ts --config jestconfig.json",
     "prebuild": "npm run lint && npm run test",
     "build": "tsc",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
