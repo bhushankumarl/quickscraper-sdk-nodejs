@@ -14,6 +14,12 @@ test('Parse URL', async () => {
     const response = await QuickScraperClient.getHtml(requestUrl);
     expect(response).not.toBeNull();
     expect(response).not.toBeUndefined();
+
+    expect(response.data).not.toBeNull();
+    expect(response.metadata).not.toBeNull();
+
+    expect(response.data).not.toBeUndefined();
+    expect(response.metadata).not.toBeUndefined();
   } catch (error) {
     debug('error ', error);
     expect(error).toBeNull();
