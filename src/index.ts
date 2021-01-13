@@ -13,11 +13,11 @@ export interface IQuickScraperResponse {
   metadata: IQuickScraperMetadata
 }
 
-export class QuickScraper {
+class QuickScraper {
   private parseUrl: string;
   private accessToken = '';
   private DEFAULT = {
-    client: 'NODEJS_CLIENT_LIB'
+    CLIENT: 'NODEJS_CLIENT_LIB'
   }
 
   public constructor(accessToken?: string) {
@@ -63,8 +63,12 @@ export class QuickScraper {
 
   private prepareHeaders() {
     const headers = {
-      client: this.DEFAULT.client
+      client: this.DEFAULT.CLIENT
     };
     return headers;
   }
 }
+
+module.exports = QuickScraper;
+module.exports.QuickScraper = QuickScraper;
+module.exports.default = QuickScraper;

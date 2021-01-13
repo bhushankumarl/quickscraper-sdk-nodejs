@@ -6,7 +6,7 @@
 
 [Register For Free https://www.quickscraper.co](https://www.quickscraper.co)
 
-##### It does supports EcmaScript 8, TypeScript, async-await, Promises, Callback !
+##### It does supports EcmaScript 8, TypeScript, async-await, Promises !
 
 ##### It does also supports for AWS Lambda like serverless cloud function call.
 

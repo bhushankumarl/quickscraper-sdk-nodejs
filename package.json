@@ -28,7 +28,9 @@
     "proxies",
     "CAPTCHAs",
     "headless browsers",
-    "crawling"
+    "crawling",
+    "web-crawling",
+    "crawling-websites"
   ],
   "author": "Bhushankumar L (bhushankumar.lilapara@gmail.com)",
   "license": "MIT",
