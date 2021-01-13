@@ -1,4 +1,5 @@
 import Debug from 'debug';
+import * as fs from 'fs-extra';
 import got from 'got';
 import { APP } from './constants';
 const debug = Debug('QS:index.ts');
@@ -45,20 +46,39 @@ export class QuickScraper {
     const options = {
       headers: headers
     };
-    const response = await got(requestUrl, options);
-    // console.log('response ', response);
-    // console.log('response ', response.headers);
-    debug('response.statusCode ', response.statusCode);
-    // console.log(response.body);
-
-    const metadata = {
-      'quotaMax': response.headers['x-qs-quota-max']?.toString(),
-      'quotaRemaining': response.headers['x-qs-quota-remaining']?.toString()
+    try {
+      const response = await got(requestUrl, options);
+      // console.log('response ', response);
+      // console.log('response ', response.headers);
+      // debug('response.statusCode ', response.statusCode);
+      // console.log(response.body);
+      // debug('response.error ', response.error);
+      const metadata = {
+        'quotaMax': response.headers['x-qs-quota-max']?.toString(),
+        'quotaRemaining': response.headers['x-qs-quota-remaining']?.toString()
+      }
+      return {
+        data: response.body,
+        metadata: metadata
+      };
+    } catch (error) {
+      debug('error ', error);
+      debug('error.message ', error.message);
+      debug('error.statusCode ', error.statusCode);
+      debug('error.code ', error.code);
+      // console.log('error ', error);
+      throw Error(error);
     }
-    return {
-      data: response.body,
-      metadata: metadata
-    };
+  }
+
+  public async writeHtmlToFile(url: string, filePath: string): Promise<IQuickScraperResponse> {
+    const isFileExits = await fs.pathExists(filePath);
+    if (isFileExits === false) {
+      throw Error('File does not exits.');
+    }
+    const response: IQuickScraperResponse = await this.getHtml(url);
+    fs.outputFileSync(filePath, response.data);
+    return response;
   }
 
   private prepareRequestUrl(url: string): string {
