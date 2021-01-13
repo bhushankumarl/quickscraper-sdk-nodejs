@@ -17,13 +17,20 @@ export class QuickScraper {
   private parseUrl: string;
   private accessToken = '';
   private DEFAULT = {
-    client: 'NODEJS_CLIENT_LIB'
+    CLIENT: 'NODEJS_CLIENT_LIB',
+    HOST: APP.BASE_URL
   }
 
   public constructor(accessToken?: string) {
-    this.parseUrl = APP.BASE_URL.concat('parse');
+    this.parseUrl = this.DEFAULT.HOST.concat('parse');
     if (accessToken) {
       this.setAccessToken(accessToken);
+    }
+  }
+
+  public setHost(host: string) {
+    if (host) {
+      this.parseUrl = host.concat('parse');
     }
   }
 
@@ -63,8 +70,12 @@ export class QuickScraper {
 
   private prepareHeaders() {
     const headers = {
-      client: this.DEFAULT.client
+      client: this.DEFAULT.CLIENT
     };
     return headers;
   }
 }
+
+module.exports = QuickScraper;
+module.exports.QuickScraper = QuickScraper;
+module.exports.default = QuickScraper;
