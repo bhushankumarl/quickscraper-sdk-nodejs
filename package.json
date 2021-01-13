@@ -13,6 +13,8 @@
     "test:single": "jest parse.test.ts --config jestconfig.json",
     "prebuild": "npm run lint && npm run test",
     "build": "tsc",
+    "prepublish": "npm run build",
+    "publish": "npm publish",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
     "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "patch": "npm version patch",
