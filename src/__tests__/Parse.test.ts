@@ -28,7 +28,7 @@ test('Import : Parse URL', async () => {
 
 test('Import : Write to File', async () => {
   const requestUrl = MOCK.SAMPLE_REQUEST_URL_1;
-  debug('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);
+  // debug('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);
   // console.log('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);
   QuickScraperClient.setAccessToken(ENVs.ACCESS_TOKEN)
   try {
@@ -46,5 +46,17 @@ test('Import : Write to File', async () => {
   } catch (error) {
     debug('error ', error);
     expect(error).toBeNull();
+  }
+});
+
+test('Import : Request should be failed with wrong token', async () => {
+  const requestUrl = MOCK.SAMPLE_REQUEST_URL_1;
+  QuickScraperClient.setAccessToken('DUMMY')
+  try {
+    const response = await QuickScraperClient.getHtml(requestUrl);
+    expect(response).toBeNull();
+  } catch (error) {
+    debug('error ', error);
+    expect(error).not.toBeNull();
   }
 });
