@@ -1,4 +1,5 @@
 import Debug from 'debug';
+import * as fs from 'fs-extra';
 import got from 'got';
 import { APP } from './constants';
 const debug = Debug('QS:index.ts');
@@ -59,6 +60,16 @@ export class QuickScraper {
       data: response.body,
       metadata: metadata
     };
+  }
+
+  public async writeHtmlToFile(url: string, filePath: string): Promise<IQuickScraperResponse> {
+    const isFileExits = await fs.pathExists(filePath);
+    if (isFileExits === false) {
+      throw Error('File does not exits.');
+    }
+    const response: IQuickScraperResponse = await this.getHtml(url);
+    fs.outputFileSync(filePath, response.data);
+    return response;
   }
 
   private prepareRequestUrl(url: string): string {
