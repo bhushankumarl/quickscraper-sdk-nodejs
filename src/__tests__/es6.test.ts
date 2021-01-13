@@ -5,7 +5,7 @@ const debug = Debug('QS:es6.test.ts');
 const QuickScraper = require('../index');
 
 test('ES6 : Parse URL', async () => {
-  const QuickScraperClient = new QuickScraper('Hello');
+  const QuickScraperClient = new QuickScraper();
   debug('QuickScraperClient ', QuickScraperClient);
   const requestUrl = MOCK.SAMPLE_REQUEST_URL_1;
   // debug('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);

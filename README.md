@@ -23,7 +23,7 @@ npm install quickscraper-sdk --save
 * Register yourself here [https://app.quickscraper.co/auth/register](https://app.quickscraper.co/auth/register)
 
 ## Examples
-
+### Typescript
 ``` typescript
 import { QuickScraper } from 'quickscraper-sdk';
 const QuickScraperClient = new QuickScraper();
@@ -32,8 +32,27 @@ try {
   const ACCESS_TOKEN = '';
   QuickScraperClient.setAccessToken(ACCESS_TOKEN)
   const requestUrl = 'https://mylocation.org';
-  const htmlResponse = await QuickScraperClient.getHtml(requestUrl);
-  console.log('htmlResponse ', htmlResponse);
+  const response = await QuickScraperClient.getHtml(requestUrl);
+  console.log('htmlResponse ', response.data);
+  console.log('metadata ', response.metadata);
+  // Manipulate your response here using cheerio
+} catch (error) {
+  console.log('error ', error);
+}
+```
+
+### Javascript
+``` javascript
+const QuickScraper = require('quickscraper-sdk');
+const QuickScraperClient = new QuickScraper();
+
+try {
+  const ACCESS_TOKEN = '';
+  QuickScraperClient.setAccessToken(ACCESS_TOKEN)
+  const requestUrl = 'https://mylocation.org';
+  const response = await QuickScraperClient.getHtml(requestUrl);
+  console.log('htmlResponse ', response.data);
+  console.log('metadata ', response.metadata);
   // Manipulate your response here using cheerio
 } catch (error) {
   console.log('error ', error);
