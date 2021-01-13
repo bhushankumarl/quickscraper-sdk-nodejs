@@ -17,13 +17,20 @@ class QuickScraper {
   private parseUrl: string;
   private accessToken = '';
   private DEFAULT = {
-    CLIENT: 'NODEJS_CLIENT_LIB'
+    CLIENT: 'NODEJS_CLIENT_LIB',
+    HOST: APP.BASE_URL
   }
 
   public constructor(accessToken?: string) {
-    this.parseUrl = APP.BASE_URL.concat('parse');
+    this.parseUrl = this.DEFAULT.HOST.concat('parse');
     if (accessToken) {
       this.setAccessToken(accessToken);
+    }
+  }
+
+  public setHost(host: string) {
+    if (host) {
+      this.parseUrl = host.concat('parse');
     }
   }
 
