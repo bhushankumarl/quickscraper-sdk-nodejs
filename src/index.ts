@@ -13,7 +13,7 @@ export interface IQuickScraperResponse {
   metadata: IQuickScraperMetadata
 }
 
-class QuickScraper {
+export class QuickScraper {
   private parseUrl: string;
   private accessToken = '';
   private DEFAULT = {
