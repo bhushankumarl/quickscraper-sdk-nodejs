@@ -1,7 +1,9 @@
 import Debug from 'debug';
 import * as fs from 'fs-extra';
 import got from 'got';
+import { version } from '../package.json';
 import { APP } from './constants';
+import { QsError } from './error';
 const debug = Debug('QS:index.ts');
 
 export interface IQuickScraperMetadata {
@@ -19,7 +21,8 @@ export class QuickScraper {
   private accessToken = '';
   private DEFAULT = {
     CLIENT: 'NODEJS_CLIENT_LIB',
-    HOST: APP.BASE_URL
+    HOST: APP.BASE_URL,
+    CLIENT_VERSION: version
   }
 
   public constructor(accessToken?: string) {
@@ -65,16 +68,23 @@ export class QuickScraper {
       debug('error ', error);
       debug('error.message ', error.message);
       debug('error.statusCode ', error.statusCode);
-      debug('error.code ', error.code);
+      debug('error.type ', error.type);
       // console.log('error ', error);
-      throw Error(error);
+      const message = error.message || 'Failed to process request';
+      const type = error.type || 'UNKNOWN';
+      const statusCode = error.statusCode || 530;
+      throw new QsError(message, type, statusCode);
     }
   }
 
   public async writeHtmlToFile(url: string, filePath: string): Promise<IQuickScraperResponse> {
     const isFileExits = await fs.pathExists(filePath);
     if (isFileExits === false) {
-      throw Error('File does not exits.');
+      const message = 'File does not exits.';
+      const errorCode = 'FILE_NOT_EXITS';
+      const statusCode = 400;
+      throw new QsError(message, errorCode, statusCode);
+      // throw Error('File does not exits.');
     }
     const response: IQuickScraperResponse = await this.getHtml(url);
     fs.outputFileSync(filePath, response.data);
@@ -90,7 +100,8 @@ export class QuickScraper {
 
   private prepareHeaders() {
     const headers = {
-      client: this.DEFAULT.CLIENT
+      client: this.DEFAULT.CLIENT,
+      clientVersion: this.DEFAULT.CLIENT_VERSION
     };
     return headers;
   }

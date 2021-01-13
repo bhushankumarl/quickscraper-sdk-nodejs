@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import Debug from 'debug';
+import * as fs from 'fs-extra';
 import { ENVs, MOCK } from './mock/constant';
 const debug = Debug('QS:es6.test.ts');
 const QuickScraper = require('../index');
@@ -13,6 +14,30 @@ test('ES6 : Parse URL', async () => {
   QuickScraperClient.setAccessToken(ENVs.ACCESS_TOKEN)
   try {
     const response = await QuickScraperClient.getHtml(requestUrl);
+    expect(response).not.toBeNull();
+    expect(response).not.toBeUndefined();
+
+    expect(response.data).not.toBeNull();
+    expect(response.metadata).not.toBeNull();
+
+    expect(response.data).not.toBeUndefined();
+    expect(response.metadata).not.toBeUndefined();
+  } catch (error) {
+    debug('error ', error);
+    expect(error).toBeNull();
+  }
+});
+
+test('ES6 : Write to File', async () => {
+  const requestUrl = MOCK.SAMPLE_REQUEST_URL_1;
+  // debug('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);
+  // console.log('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);
+  const QuickScraperClient = new QuickScraper();
+  QuickScraperClient.setAccessToken(ENVs.ACCESS_TOKEN)
+  try {
+    const filePath = './temp.log';
+    await fs.ensureFile(filePath);
+    const response = await QuickScraperClient.writeHtmlToFile(requestUrl, filePath);
     expect(response).not.toBeNull();
     expect(response).not.toBeUndefined();
 

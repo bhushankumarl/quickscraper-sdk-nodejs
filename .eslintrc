@@ -83,8 +83,7 @@
       "setInterval",
       "clearInterval",
       "setTimeout",
-      "clearTimeout",
-      "Date"
+      "clearTimeout"
     ],
     "@typescript-eslint/explicit-module-boundary-types": [
       "off", // TODO : It should be on, require interface for all bojects

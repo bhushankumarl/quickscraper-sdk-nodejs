@@ -56,7 +56,26 @@ test('Import : Request should be failed with wrong token', async () => {
     const response = await QuickScraperClient.getHtml(requestUrl);
     expect(response).toBeNull();
   } catch (error) {
+    // debug('error ', error);
+    expect(error).not.toBeNull();
+  }
+});
+
+test('Import : Request should be failed with wrong file path', async () => {
+  const requestUrl = MOCK.SAMPLE_REQUEST_URL_1;
+  // debug('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);
+  // console.log('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);
+  QuickScraperClient.setAccessToken(ENVs.ACCESS_TOKEN)
+  try {
+    const filePath = './temp'.concat(new Date().getUTCMilliseconds().toString(), '.log');
+    // await fs.ensureFile(filePath);
+    const response = await QuickScraperClient.writeHtmlToFile(requestUrl, filePath);
+    expect(response).toBeNull();
+    expect(response).toBeUndefined();
+  } catch (error) {
     debug('error ', error);
     expect(error).not.toBeNull();
+    expect(error.errorCode).not.toBeNull();
+    expect(error.errorCode).toEqual('FILE_NOT_EXITS');
   }
 });
