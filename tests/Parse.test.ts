@@ -1,6 +1,6 @@
 import Debug from 'debug';
 import * as fs from 'fs-extra';
-import { QuickScraper } from '../index';
+import { QuickScraper } from '../src/index';
 import { ENVs, MOCK } from './mock/constant';
 const QuickScraperClient = new QuickScraper();
 const debug = Debug('QS:parse.test.ts');

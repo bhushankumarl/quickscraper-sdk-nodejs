@@ -3,7 +3,7 @@ import Debug from 'debug';
 import * as fs from 'fs-extra';
 import { ENVs, MOCK } from './mock/constant';
 const debug = Debug('QS:es6.test.ts');
-const QuickScraper = require('../index');
+const QuickScraper = require('../src/index');
 
 test('ES6 : Parse URL', async () => {
   const QuickScraperClient = new QuickScraper();

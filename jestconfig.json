@@ -2,7 +2,7 @@
   "transform": {
     "^.+\\.(t|j)sx?$": "ts-jest"
   },
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+  "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
   "moduleFileExtensions": [
     "ts",
     "tsx",
@@ -14,9 +14,9 @@
   "coverageDirectory": "./coverage/",
   "collectCoverage": true,
   "setupFilesAfterEnv": [
-    "./src/__tests__/jest.setup.ts"
+    "./tests/jest.setup.ts"
   ],
   "modulePathIgnorePatterns": [
-    "./src/__tests__/jest.setup.ts"
+    "./tests/jest.setup.ts"
   ]
 }
