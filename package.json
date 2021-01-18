@@ -11,7 +11,7 @@
     "test": "jest --config jestconfig.json",
     "posttest": "npm run lint",
     "test:single": "jest parse.test.ts --config jestconfig.json",
-    "prebuild": "npm run lint && npm run test",
+    "prebuild": "npm run test && npm run lint",
     "build": "tsc",
     "prepublish": "npm run build",
     "publish": "npm publish",
