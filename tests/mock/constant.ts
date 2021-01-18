@@ -10,7 +10,7 @@ export const ENVs = {
   ACCESS_TOKEN: process.env.QS_ACCESS_TOKEN || ''
 }
 
-// console.log('ENVs ', ENVs);
+console.log('ENVs ', ENVs);
 // console.log('MOCK ', MOCK);
 debug('MOCK ', MOCK);
 
