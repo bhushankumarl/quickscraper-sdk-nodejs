@@ -16,6 +16,14 @@ export interface IQuickScraperResponse {
   metadata: IQuickScraperMetadata
 }
 
+export interface IParseOptions {
+  render?: boolean
+  keep_headers?: boolean
+  country_code?: string
+  session_number?: string
+  headers?: { [key: string]: string }
+}
+
 export class QuickScraper {
   private parseUrl: string;
   private accessToken = '';
@@ -42,10 +50,11 @@ export class QuickScraper {
     this.accessToken = accessToken;
   }
 
-  public async getHtml(url: string): Promise<IQuickScraperResponse> {
+  public async getHtml(url: string, parseOptions: IParseOptions = {}): Promise<IQuickScraperResponse> {
     const requestUrl = this.prepareRequestUrl(url);
-    // console.log('requestUrl ', requestUrl);
-    const headers = this.prepareHeaders();
+    debug('requestUrl ', requestUrl);
+    const customHeaders = parseOptions.headers;
+    const headers = this.prepareHeaders(customHeaders);
     const options = {
       headers: headers
     };
@@ -66,18 +75,18 @@ export class QuickScraper {
       };
     } catch (error) {
       debug('error ', error);
-      debug('error.message ', error.message);
-      debug('error.statusCode ', error.statusCode);
-      debug('error.type ', error.type);
       // console.log('error ', error);
       const message = error.message || 'Failed to process request';
       const type = error.type || 'UNKNOWN';
       const statusCode = error.statusCode || 530;
+      debug('error message ', message);
+      debug('error statusCode ', statusCode);
+      debug('error type ', type);
       throw new QsError(message, type, statusCode);
     }
   }
 
-  public async writeHtmlToFile(url: string, filePath: string): Promise<IQuickScraperResponse> {
+  public async writeHtmlToFile(url: string, filePath: string, parseOptions?: IParseOptions): Promise<IQuickScraperResponse> {
     const isFileExits = await fs.pathExists(filePath);
     if (isFileExits === false) {
       const message = 'File does not exits.';
@@ -86,7 +95,7 @@ export class QuickScraper {
       throw new QsError(message, errorCode, statusCode);
       // throw Error('File does not exits.');
     }
-    const response: IQuickScraperResponse = await this.getHtml(url);
+    const response: IQuickScraperResponse = await this.getHtml(url, parseOptions);
     fs.outputFileSync(filePath, response.data);
     return response;
   }
@@ -98,12 +107,16 @@ export class QuickScraper {
     return requestUrl;
   }
 
-  private prepareHeaders() {
+  private prepareHeaders(customHeaders?: { [key: string]: string }) {
     const headers = {
       client: this.DEFAULT.CLIENT,
-      clientVersion: this.DEFAULT.CLIENT_VERSION
+      clientVersion: this.DEFAULT.CLIENT_VERSION,
     };
-    return headers;
+    const mergedHeaders = {
+      ...headers,
+      ...customHeaders
+    };
+    return mergedHeaders;
   }
 }
 

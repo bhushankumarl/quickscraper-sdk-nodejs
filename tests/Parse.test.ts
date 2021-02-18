@@ -7,7 +7,7 @@ const debug = Debug('QS:parse.test.ts');
 
 test('Import : Parse URL', async () => {
   const requestUrl = MOCK.SAMPLE_REQUEST_URL_1;
-  debug('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);
+  // debug('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);
   // console.log('ENVs.ACCESS_TOKEN ', ENVs.ACCESS_TOKEN);
   QuickScraperClient.setAccessToken(ENVs.ACCESS_TOKEN)
   try {
@@ -21,7 +21,7 @@ test('Import : Parse URL', async () => {
     expect(response.data).not.toBeUndefined();
     expect(response.metadata).not.toBeUndefined();
   } catch (error) {
-    debug('error ', error);
+    // debug('error ', error);
     expect(error).toBeNull();
   }
 });
