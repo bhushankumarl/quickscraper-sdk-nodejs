@@ -57,7 +57,8 @@
           "sequelize",
           "Sequelize",
           "utf",
-          "DTO"
+          "DTO",
+          "querystring"
         ],
         "skipIfMatch": [
           "http://[^s]*",

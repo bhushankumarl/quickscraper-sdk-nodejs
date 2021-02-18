@@ -1,6 +1,7 @@
 import Debug from 'debug';
 import * as fs from 'fs-extra';
 import got from 'got';
+import * as querystring from 'querystring';
 import { version } from '../package.json';
 import { APP } from './constants';
 import { QsError } from './error';
@@ -51,7 +52,7 @@ export class QuickScraper {
   }
 
   public async getHtml(url: string, parseOptions: IParseOptions = {}): Promise<IQuickScraperResponse> {
-    const requestUrl = this.prepareRequestUrl(url);
+    const requestUrl = this.prepareRequestUrl(url, parseOptions);
     debug('requestUrl ', requestUrl);
     const customHeaders = parseOptions.headers;
     const headers = this.prepareHeaders(customHeaders);
@@ -100,9 +101,18 @@ export class QuickScraper {
     return response;
   }
 
-  private prepareRequestUrl(url: string): string {
-    const requestUrl = this.parseUrl.concat('?', 'access_token=', this.accessToken,
-      '&', 'URL=', url);
+  private prepareRequestUrl(url: string, parseOptions?: IParseOptions): string {
+    const options = {
+      access_token: this.accessToken,
+      URL: url
+    }
+    const mergedOptions = {
+      ...parseOptions,
+      ...options
+    };
+    const optionString = querystring.stringify(options);
+    debug('optionString ', optionString);
+    const requestUrl = this.parseUrl.concat('?', optionString);
     // console.log('requestUrl ', requestUrl);
     return requestUrl;
   }
